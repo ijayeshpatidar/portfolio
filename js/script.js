@@ -243,24 +243,19 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("contact-form").addEventListener("submit", function (event) {
         event.preventDefault();
 
-        // Collect form data
-        const formData = {
-            name: document.getElementById("name").value,
-            email: document.getElementById("email").value,
-            message: document.getElementById("message").value,
-        };
+        const form = event.target; // Reference the form
+        const formData = new FormData(form); // Collect form data
+        const data = Object.fromEntries(formData.entries()); // Convert to object
 
-        // Send email using EmailJS
-        emailjs.send("service_7h4ppbs", "template_nqnp8jo", formData)
-            .then(function (response) {
+        emailjs.send("service_7h4ppbs", "template_nqnp8jo", data)
+            .then((response) => {
                 alert("Message sent successfully!");
-                document.getElementById("contact-form").reset(); // Clear form
+                form.reset(); // Reset the form
             })
-            .catch(function (error) {
-                console.error("Error:", error);
-                alert("Failed to send message. Please try again.");
+            .catch((error) => {
+                console.error("EmailJS Error:", error);
+                alert("Failed to send message. Please check console for details.");
             });
     });
 });
-
 

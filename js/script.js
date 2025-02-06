@@ -148,22 +148,33 @@ contactForm.addEventListener('submit', (e) => {
     });
     
     if (isValid) {
-        // Here you would typically send the form data to a server
-        const formData = new FormData(contactForm);
-        const data = Object.fromEntries(formData);
-        
-        // Simulate form submission
         const submitButton = contactForm.querySelector('button[type="submit"]');
         const originalText = submitButton.textContent;
         submitButton.disabled = true;
         submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
         
-        setTimeout(() => {
-            showNotification('Message sent successfully!', 'success');
-            contactForm.reset();
-            submitButton.disabled = false;
-            submitButton.textContent = originalText;
-        }, 1500);
+        // Prepare the data for EmailJS
+        const formData = {
+            name: document.getElementById('name').value,
+            email: document.getElementById('email').value,
+            message: document.getElementById('message').value
+        };
+        
+        // Send email using EmailJS
+        emailjs.send('service_7h4ppbs', 'template_nqnp8jo', formData)
+            .then(function(response) {
+                console.log('SUCCESS!', response.status, response.text);
+                showNotification('Message sent successfully!', 'success');
+                contactForm.reset();
+                submitButton.disabled = false;
+                submitButton.textContent = originalText;
+            })
+            .catch(function(error) {
+                console.log('FAILED...', error);
+                showNotification('Failed to send message. Please try again.', 'error');
+                submitButton.disabled = false;
+                submitButton.textContent = originalText;
+            });
     }
 });
 
@@ -237,34 +248,3 @@ function showNotification(message, type = 'success') {
         setTimeout(() => notification.remove(), 300);
     }, 3000);
 }
-
-document.getElementById('contact-form').addEventListener('submit', function(event) {
-    event.preventDefault();
-
-    // Get form data
-    const formData = {
-        name: document.getElementById('name').value,
-        email: document.getElementById('email').value,
-        subject: document.getElementById('subject').value,
-        message: document.getElementById('message').value
-    };
-
-    // Send email using EmailJS
-    emailjs.send(
-        'service_7h4ppbs',
-        'template_nqnp8jo',
-        formData
-    ).then(
-        function(response) {
-            console.log('SUCCESS!', response.status, response.text);
-            alert('Message sent successfully!');
-            document.getElementById('contact-form').reset();
-        },
-        function(error) {
-            console.log('FAILED...', error);
-            alert('Failed to send message. Please try again.');
-        }
-    );
-});
-
-

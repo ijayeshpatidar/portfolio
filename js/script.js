@@ -238,3 +238,33 @@ function showNotification(message, type = 'success') {
     }, 3000);
 }
 
+document.getElementById('contact-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    // Get form data
+    const formData = {
+        name: document.getElementById('name').value,
+        email: document.getElementById('email').value,
+        subject: document.getElementById('subject').value,
+        message: document.getElementById('message').value
+    };
+
+    // Send email using EmailJS
+    emailjs.send(
+        'service_7h4ppbs',
+        'template_nqnp8jo',
+        formData
+    ).then(
+        function(response) {
+            console.log('SUCCESS!', response.status, response.text);
+            alert('Message sent successfully!');
+            document.getElementById('contact-form').reset();
+        },
+        function(error) {
+            console.log('FAILED...', error);
+            alert('Failed to send message. Please try again.');
+        }
+    );
+});
+
+

@@ -237,13 +237,30 @@ function showNotification(message, type = 'success') {
         setTimeout(() => notification.remove(), 300);
     }, 3000);
 }
-function sendMail(){
-    let parm ={
-        name : document.getElementByID("name").value,
-        email : document.getElementByID("email").value,
-        message : document.getElementByID("message").value,
-}
+document.addEventListener("DOMContentLoaded", function () {
+    emailjs.init("PJCrk-K3bbT3dVptj");
 
-emailjs.send("service_7h4ppbs","service_7h4ppbs",parms).then(alert("Email Sent!!"))
-}
+    document.getElementById("contact-form").addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        // Collect form data
+        const formData = {
+            name: document.getElementById("name").value,
+            email: document.getElementById("email").value,
+            message: document.getElementById("message").value,
+        };
+
+        // Send email using EmailJS
+        emailjs.send("service_7h4ppbs", "template_nqnp8jo", formData)
+            .then(function (response) {
+                alert("Message sent successfully!");
+                document.getElementById("contact-form").reset(); // Clear form
+            })
+            .catch(function (error) {
+                console.error("Error:", error);
+                alert("Failed to send message. Please try again.");
+            });
+    });
+});
+
 

@@ -237,27 +237,4 @@ function showNotification(message, type = 'success') {
         setTimeout(() => notification.remove(), 300);
     }, 3000);
 }
-document.addEventListener("DOMContentLoaded", function () {
-    emailjs.init("PJCrk-K3bbT3dVptj"); // Ensure this is your actual EmailJS user ID
-
-    document.getElementById("contact-form").addEventListener("submit", function (event) {
-        event.preventDefault();
-
-        const formData = new FormData(this); // Get form data
-        const data = Object.fromEntries(formData.entries()); // Convert to object
-
-        console.log("Sending data:", data); // Debugging
-
-        emailjs.send("service_7h4ppbs", "template_nqnp8jo", data)
-            .then((response) => {
-                alert("Message sent successfully!");
-                document.getElementById("contact-form").reset(); // Clear form
-            })
-            .catch((error) => {
-                console.error("EmailJS Error:", error);
-                alert("Failed to send message. Check console for details.");
-            });
-    });
-});
-
 

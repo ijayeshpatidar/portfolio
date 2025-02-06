@@ -237,3 +237,13 @@ function showNotification(message, type = 'success') {
         setTimeout(() => notification.remove(), 300);
     }, 3000);
 }
+function sendMail(){
+    let parm ={
+        name : document.getElementByID("name").value,
+        email : document.getElementByID("email").value,
+        message : document.getElementByID("message").value,
+}
+
+emailjs.send("service_7h4ppbs","service_7h4ppbs",parms).then(alert("Email Sent!!"))
+}
+

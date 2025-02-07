@@ -437,6 +437,67 @@ section:nth-child(even) {
 }
 
 /* Experience Section */
+.experience-section {
+    padding: 6rem 0;
+}
+
+.experience-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.experience-item {
+    background-color: var(--card-bg);
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    border: 1px solid var(--border-color);
+}
+
+.experience-item:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-sm);
+}
+
+.experience-item h3 {
+    color: var(--text-color);
+    margin-bottom: 0.5rem;
+    font-size: 1.25rem;
+}
+
+.experience-item .company {
+    color: var(--primary-color);
+    margin-bottom: 0.25rem;
+}
+
+.experience-item .duration {
+    color: var(--text-light);
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+.experience-item ul {
+    list-style-position: inside;
+    color: var(--text-light);
+}
+
+.experience-item li {
+    margin-bottom: 0.5rem;
+}
+
+.experience-item li:last-child {
+    margin-bottom: 0;
+}
+
+@media (max-width: 768px) {
+    .experience-item {
+        padding: 1.5rem;
+    }
+}
+
 
 /* Contact Section */
 .contact-section {

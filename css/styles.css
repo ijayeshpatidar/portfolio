@@ -377,7 +377,7 @@ section:nth-child(even) {
 
 /* Education Section */
 .education-section {
-    padding: 6rem 0;
+    padding: 2rem 0;
 }
 
 .education-list {
@@ -438,7 +438,7 @@ section:nth-child(even) {
 
 /* Experience Section */
 .experience-section {
-    padding: 6rem 0;
+    padding: 2rem 0;
 }
 
 .experience-list {
@@ -500,7 +500,7 @@ section:nth-child(even) {
 
 /* Contact Section */
 .contact-section {
-    padding: 6rem 0;
+    padding: 2rem 0;
     background-color: var(--bg-color);
 }
 

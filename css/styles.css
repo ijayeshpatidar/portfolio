@@ -268,7 +268,7 @@ section:nth-child(even) {
 }
 
 .about-content p {
-    margin-bottom: 3.5rem;
+    margin-bottom: 1.5rem;
 }
 
 .about-image {
@@ -498,7 +498,6 @@ section:nth-child(even) {
     }
 }
 
-
 /* Contact Section */
 .contact-section {
     padding: 6rem 0;
@@ -514,7 +513,7 @@ section:nth-child(even) {
 
 .contact-form {
     max-width: 600px;
-    margin: 0 auto;
+    margin: 2rem auto;
     padding: 2rem;
     background-color: var(--bg-alt);
     border-radius: 8px;
@@ -525,31 +524,16 @@ section:nth-child(even) {
     margin-bottom: 1.5rem;
 }
 
-.form-group label {
-    display: block;
-    margin-bottom: 0.5rem;
-    color: var(--text-color);
-    font-family: 'Fira Code', monospace;
-    font-size: 0.9rem;
-}
-
 .form-group input,
 .form-group textarea {
     width: 100%;
-    padding: 0.75rem;
-    background-color: var(--bg-color);
+    padding: 0.8rem;
     border: 1px solid var(--border-color);
     border-radius: 4px;
+    background: var(--bg-color);
     color: var(--text-color);
     font-family: 'Inter', sans-serif;
-    transition: var(--transition);
-}
-
-.form-group input:focus,
-.form-group textarea:focus {
-    outline: none;
-    border-color: var(--primary-color);
-    box-shadow: 0 0 0 2px var(--primary-light);
+    transition: border-color 0.3s ease;
 }
 
 .form-group textarea {
@@ -557,14 +541,22 @@ section:nth-child(even) {
     resize: vertical;
 }
 
-.contact-form .btn {
-    width: 100%;
-    margin-top: 1rem;
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
 }
 
-.contact-form .btn:hover {
-    background-color: var(--primary-light);
-    color: var(--bg-color);
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: var(--text-light);
+}
+
+.contact-form button {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1rem;
+    font-weight: 600;
 }
 
 /* Form validation styles */

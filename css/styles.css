@@ -455,7 +455,6 @@ section:nth-child(even) {
     border-radius: 1rem;
     box-shadow: var(--shadow);
     transition: var(--transition);
-    border: 1px solid var(--border-color);
 }
 
 .experience-item:hover {
@@ -496,6 +495,58 @@ section:nth-child(even) {
 
 @media (max-width: 768px) {
     .experience-item {
+        padding: 1.5rem;
+    }
+}
+
+/* Certifications Section */
+.certifications-section {
+    padding: 2rem 0;
+    background-color: var(--bg-color);
+}
+
+.certifications-list {
+    display: grid;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.certification-item {
+    background-color: var(--card-bg);
+    padding: 2rem;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    transition: var(--transition);
+}
+
+.certification-item:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow);
+}
+
+.certification-item h3 {
+    color: var(--text-color);
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+}
+
+.cert-issuer {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+.cert-date, .cert-id {
+    color: var(--text-light);
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+}
+
+@media (max-width: 768px) {
+    .certifications-section {
+        padding: 4rem 0;
+    }
+    
+    .certification-item {
         padding: 1.5rem;
     }
 }

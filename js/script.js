@@ -1,3 +1,9 @@
+// Initialize EmailJS when the DOM is fully loaded
+document.addEventListener('DOMContentLoaded', function() {
+    // Replace "YOUR_USER_ID" with your actual EmailJS User ID
+    emailjs.init("YOUR_USER_ID");
+});
+
 // Theme Toggle
 const themeToggle = document.getElementById('theme-toggle');
 const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
